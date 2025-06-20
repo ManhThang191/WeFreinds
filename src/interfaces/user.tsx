@@ -1,9 +1,12 @@
-import { IFriend } from './friends';
+import { ERoleUser } from '@/enums/enums';
+import { IFriends } from './friends';
 
 export interface IUser {
-  IdUser: string;
-  NameUser: string;
+  roleUser: ERoleUser;
+  idUser: string;
+  isActive: boolean;
+  nameUser: string;
   email?: string;
-  ListFriend: IFriend[];
-  Image?: string;
+  listFriend: IFriends[];
+  image?: string;
 }

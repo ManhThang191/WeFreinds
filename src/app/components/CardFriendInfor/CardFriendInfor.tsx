@@ -1,38 +1,30 @@
-import { IFriend } from '@/interfaces/friends';
+import { FriendsList } from '@/FakeData/FriendsFakeData';
 import React from 'react';
 
-const CardFriendInfor = ({
-  NameFriend,
-  IdFriend,
-  Allergy,
-  Closefriend,
-  DateOfBirth,
-  Favorite,
-  Image,
-  NickName,
-}: IFriend) => {
+// interface FriendsProps {
+//   idFriend: string;
+//   nameFriend: string;
+//   dateOfBirth: Date;
+//   closefriend: boolean;
+//   nickName?: string;
+//   allergy?: string[];
+// }
+
+const CardFriendInfor = () => {
   return (
     <>
-      ({Closefriend} && ({Closefriend} ? (
-      <>
-        <div key={IdFriend} className="bg-pink-300">
-          <div></div>
-          <div>
-            <span>{NameFriend}</span>
-          </div>
-          <div></div>
-        </div>
-      </>
-      ) : (
-      <>
-        <div key={IdFriend}>
-          <div></div>
-          <div>
-            <span>{NameFriend}</span>
-          </div>
-        </div>
-      </>
-      ) ))
+      {FriendsList &&
+        FriendsList.map((friend) => {
+          <div key={friend.idFriend}>
+            <div>Ảnh</div>
+            <div>
+              <span>
+                {friend.nameFriend} - {friend.nickName}
+              </span>
+              <span>{friend.dateOfBirth.toDateString()}</span>
+            </div>
+          </div>;
+        })}
     </>
   );
 };

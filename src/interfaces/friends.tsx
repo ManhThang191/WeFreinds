@@ -1,21 +1,21 @@
-export interface IFriend {
-  IdFriend: string;
-  NameFriend: string;
-  DateOfBirth: Date;
-  Closefriend: boolean;
-  NickName?: string;
-  Favorite: IFavorite[];
-  Image?: IImageOfFriend[];
-  Allergy: string[]; // dị ứng
+export interface IFriends {
+  idFriend: string;
+  nameFriend: string;
+  dateOfBirth: Date;
+  closefriend: boolean;
+  nickName?: string;
+  favorite: IFavorite[];
+  image?: IImageOfFriend[];
+  allergy?: string[]; // dị ứng
 }
 
 export interface IFavorite {
-  IdFavorite: string;
-  NameFavorite: string;
+  idFavorite: string;
+  nameFavorite: string;
 }
 
 export interface IImageOfFriend {
-  IdImage: string;
-  Url: string;
-  Description: string;
+  idImage: string;
+  url: string;
+  description: string;
 }
