@@ -6,7 +6,7 @@ export interface IFriends {
   nickName?: string;
   favorite: IFavorite[];
   image?: IImageOfFriend[];
-  allergy?: string[]; // dị ứng
+  allergy?: string; // dị ứng
 }
 
 export interface IFavorite {

@@ -24,7 +24,7 @@ export const FriendsList: IFriends[] = [
         nameFavorite: 'Bún cá',
       },
     ],
-    allergy: ['Cá'],
+    allergy: 'Cá',
   },
   {
     idFriend: 'f3',
