@@ -11,20 +11,20 @@ import React from 'react';
 const FooterBase = () => {
   return (
     <>
-      <div className=" bg-black text-gray-400 !flex flex-col text-base w-full mt-3">
+      <div className=" bg-black text-gray-400 flex flex-col text-base w-full mt-3">
         <span>
           <span className="mb-2">
             Đây là trang web được xây dựng bởi cá nhân, mọi ý kiến đóng góp xin
             gửi về địa chỉ : <br />
           </span>
           <span>
-            <Link href={urlFaceBook}>
+            <Link href={urlFaceBook} target="_blank" rel="noopener noreferrer">
               {' '}
               <FacebookOutlined className="ml-2 mr-3" />
               Thắng Nguyễn
             </Link>{' '}
             <br />
-            <Link href={urlGit}>
+            <Link href={urlGit} target="_blank" rel="noopener noreferrer">
               <GithubOutlined className="ml-2 mr-3" />
               Manh Thang
             </Link>
