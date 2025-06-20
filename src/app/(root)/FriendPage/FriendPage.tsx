@@ -1,8 +1,12 @@
 import CardFriendInfor from '@/app/components/CardFriendInfor/CardFriendInfor';
 import React from 'react';
 
-const ListFriendPage = () => {
-  return <div></div>;
+const FriendPage = () => {
+  return (
+    <>
+      <CardFriendInfor />
+    </>
+  );
 };
 
-export default ListFriendPage;
+export default FriendPage;

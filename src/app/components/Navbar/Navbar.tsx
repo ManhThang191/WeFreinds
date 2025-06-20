@@ -1,4 +1,5 @@
 'use client';
+import FooterBase from '@/custom/FooterBase/FooterBase';
 import LineBase from '@/custom/LineBase/LineBase';
 import LinkBase from '@/custom/LinkBase/LinkBase';
 import LogoBase from '@/custom/LogoBase/LogoBase';
@@ -53,81 +54,85 @@ const Navbar = () => {
           </li>
 
           {/* thông báo */}
-          <li className="flex">
-            <Dropdown
-              trigger={['click']}
-              overlay={
-                <div className="w-90  bg-white !text-black rounded-lg shadow-lg overflow-hidden">
-                  <div className="text-2xl p-4">
-                    <HeartOutlined className="mr-2" />
-                    Thông báo
+          <li className="flex items-center ">
+            <div className="mr-3 hover:text-amber-400 ">
+              <Dropdown
+                className="!mr-4"
+                trigger={['click']}
+                overlay={
+                  <div className="w-90 bg-white !text-black rounded-lg shadow-lg overflow-hidden">
+                    <div className="text-2xl p-4">
+                      <HeartOutlined className="mr-2" />
+                      Thông báo
+                    </div>
+                    <div>
+                      <Button>Tất cả</Button>
+                      <Button>Chưa đọc</Button>
+                    </div>
+                    <Link
+                      href={'/'}
+                      className="block !text-black  px-4 py-2 hover:bg-gray-200"
+                    >
+                      Content Lorem ipsum dolor, sit amet consectetur
+                      adipisicing elit. Numquam neque fugiat
+                    </Link>
+                    <Link
+                      href={'/'}
+                      className="block !text-black  px-4 py-2 hover:bg-gray-200"
+                    >
+                      Content Lorem ipsum dolor, sit amet consectetur
+                      adipisicing elit. Numquam neque fugiat
+                    </Link>
+                    <Link
+                      href={'/'}
+                      className="block !text-black  px-4 py-2 hover:bg-gray-200"
+                    >
+                      Content Lorem ipsum dolor, sit amet consectetur
+                      adipisicing elit. Numquam neque fugiat
+                    </Link>
                   </div>
-                  <div>
-                    <Button>Tất cả</Button>
-                    <Button>Chưa đọc</Button>
+                }
+                placement="bottomRight"
+                arrow
+              >
+                {/* <div className="text-lg flex items-center hover:text-amber-400">
+                </div> */}
+                <HeartOutlined className="" />
+              </Dropdown>
+            </div>
+            <div className="mr-3">
+              {/* Menu user */}
+
+              <Dropdown
+                trigger={['click']}
+                overlay={
+                  <div className="w-60 bg-white !text-black rounded-lg shadow-lg overflow-hidden">
+                    <Link
+                      href={'/'}
+                      className="block !text-black  px-4 py-2 hover:bg-gray-200"
+                    >
+                      <UserOutlined className="mr-2 " />
+                      Nguyễn Mạnh Thắng
+                    </Link>
+
+                    <Link
+                      href={'/'}
+                      className="block px-4 !text-red-500 py-2 hover:!bg-red-500 hover:!text-white"
+                      // onClick={() => localStorage.removeItem('userLogin')}
+                    >
+                      <LogoutOutlined className="mr-2" />
+                      Đăng Xuất
+                    </Link>
                   </div>
-                  <Link
-                    href={'/'}
-                    className="block !text-black  px-4 py-2 hover:bg-gray-200"
-                  >
-                    Content Lorem ipsum dolor, sit amet consectetur adipisicing
-                    elit. Numquam neque fugiat
-                  </Link>
-                  <Link
-                    href={'/'}
-                    className="block !text-black  px-4 py-2 hover:bg-gray-200"
-                  >
-                    Content Lorem ipsum dolor, sit amet consectetur adipisicing
-                    elit. Numquam neque fugiat
-                  </Link>
-                  <Link
-                    href={'/'}
-                    className="block !text-black  px-4 py-2 hover:bg-gray-200"
-                  >
-                    Content Lorem ipsum dolor, sit amet consectetur adipisicing
-                    elit. Numquam neque fugiat
-                  </Link>
+                }
+                placement="bottomRight"
+                arrow
+              >
+                <div className="text-lg flex items-center hover:text-amber-400">
+                  <UserOutlined className=" text-2xl hover:!scale-110" />
                 </div>
-              }
-              placement="bottomRight"
-              // arrow
-            >
-              <div className="text-lg  flex items-center hover:text-amber-400">
-                <HeartOutlined className=" text-2xl hover:!scale-110 mr-5" />
-              </div>
-            </Dropdown>
-
-            {/* Menu user */}
-
-            <Dropdown
-              trigger={['click']}
-              overlay={
-                <div className="w-60 bg-white !text-black rounded-lg shadow-lg overflow-hidden">
-                  <Link
-                    href={'/'}
-                    className="block !text-black  px-4 py-2 hover:bg-gray-200"
-                  >
-                    <UserOutlined className="mr-2 " />
-                    Nguyễn Mạnh Thắng
-                  </Link>
-
-                  <Link
-                    href={'/'}
-                    className="block px-4 !text-red-500 py-2 hover:!bg-red-500 hover:!text-white"
-                    // onClick={() => localStorage.removeItem('userLogin')}
-                  >
-                    <LogoutOutlined className="mr-2" />
-                    Đăng Xuất
-                  </Link>
-                </div>
-              }
-              placement="bottomRight"
-              // arrow
-            >
-              <div className="text-lg flex items-center hover:text-amber-400">
-                <UserOutlined className="mr-2 text-2xl hover:!scale-110" />
-              </div>
-            </Dropdown>
+              </Dropdown>
+            </div>
           </li>
         </ul>
       </nav>
@@ -153,17 +158,25 @@ const Navbar = () => {
 
           <ul className="mt-5">
             <li className="">
-              <LinkBase label={'Trang chủ'} href={'/'} icon={HomeOutlined} />
+              <LinkBase
+                label={'Trang chủ'}
+                href={'/HomePage'}
+                icon={HomeOutlined}
+              />
             </li>
             <li className="">
               <LinkBase
-                label={'Danh sách bạn bè'}
-                href={`./ListFriendPage`}
+                label={'Bạn bè'}
+                href={`./FriendPage`}
                 icon={ShareAltOutlined}
               />
             </li>
             <li className="">
-              <LinkBase label={'Sự kiện'} href={'/'} icon={StarOutlined} />
+              <LinkBase
+                label={'Sự kiện'}
+                href={'/EventPage'}
+                icon={StarOutlined}
+              />
             </li>
             <li className="">
               <LinkBase label={'Cài đặt'} href={'/'} icon={SettingOutlined} />
@@ -171,6 +184,10 @@ const Navbar = () => {
 
             <LineBase />
           </ul>
+        </div>
+        <div className="p-4 fixed bottom-0">
+          <LineBase />
+          <FooterBase />
         </div>
       </div>
     </>
