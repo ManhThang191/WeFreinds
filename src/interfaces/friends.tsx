@@ -5,7 +5,7 @@ export interface IFriends {
   closefriend: boolean;
   nickName?: string;
   favorite: IFavorite[];
-  image?: IImageOfFriend[];
+  avatar?: string;
   allergy?: string; // dị ứng
 }
 

@@ -8,19 +8,17 @@ interface TagProps {
 const TagBase = ({ title, type }: TagProps) => {
   return (
     <>
-      ({type} === {ETypeTag.Allergy} ? (
-      <div className="rounded-2xl p-2 items-center bg-red-400">
-        <span className="">{title}</span>
-      </div>
-      ) : ( ({type} === {ETypeTag.Favorite} ? (
-      <div className="rounded-2xl p-2 items-center bg-green-300">
-        <span className="">{title}</span>
-      </div>
-      )) : (
-      <div>
-        <span>Không</span>
-      </div>
-      ) ))
+      {type === ETypeTag.Allergy ? (
+        <div className="rounded-2xl inline-block m-2 p-2 items-center bg-red-400">
+          <span>{title}</span>
+        </div>
+      ) : type === ETypeTag.Favorite ? (
+        <div className="rounded-2xl p-2 items-center m-2 inline-block bg-green-300">
+          <span>{title}</span>
+        </div>
+      ) : (
+        <span></span>
+      )}
     </>
   );
 };

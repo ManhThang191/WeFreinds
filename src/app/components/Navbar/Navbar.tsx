@@ -16,7 +16,7 @@ import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Navbar = () => {
-  const [isShowSideBar, setIsShowSideBar] = useState(false);
+  const [isShowSideBar, setIsShowSideBar] = useState(true);
   const handleOpenSideBar = () => {
     if (isShowSideBar) setIsShowSideBar(false);
     else if (!isShowSideBar) setIsShowSideBar(true);
