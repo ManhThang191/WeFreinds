@@ -5,8 +5,8 @@ import LinkShortBase from '@/custom/LinkShortBase/LinkShortBase';
 import {
   HomeOutlined,
   SettingOutlined,
-  ShareAltOutlined,
   StarOutlined,
+  TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import React from 'react';
@@ -36,7 +36,7 @@ const Sidebar = ({ isShowSidebar }: SidebarProps) => {
               <LinkBase
                 label={'Bạn bè'}
                 href={`./FriendPage`}
-                icon={ShareAltOutlined}
+                icon={TeamOutlined}
               />
             </li>
             <li className="">
@@ -75,7 +75,7 @@ const Sidebar = ({ isShowSidebar }: SidebarProps) => {
               <LinkShortBase
                 label={'Bạn bè'}
                 href={`./FriendPage`}
-                icon={ShareAltOutlined}
+                icon={TeamOutlined}
               />
             </li>
             <li className="">
