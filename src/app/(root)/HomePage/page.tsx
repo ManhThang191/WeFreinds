@@ -3,7 +3,7 @@ import HomePage from './HomePage';
 
 const page = () => {
   return (
-    <div className="bg-amber-200 pt-25 pl-35 pr-10 h-auto ">
+    <div className="bg-black pt-25 pl-35 pr-10 min-h-screen ">
       <HomePage />
     </div>
   );
