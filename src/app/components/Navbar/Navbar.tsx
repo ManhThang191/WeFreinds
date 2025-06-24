@@ -5,6 +5,7 @@ import {
   HeartOutlined,
   LogoutOutlined,
   MenuOutlined,
+  PlusOutlined,
   SearchOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -14,6 +15,7 @@ import Link from 'next/link';
 // import Link from 'next/link';
 import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
+import FormAddNewFriend from '../FormAddNewFriend/FormAddNewFriend';
 
 const Navbar = () => {
   const [isShowSideBar, setIsShowSideBar] = useState(true);
@@ -22,6 +24,11 @@ const Navbar = () => {
     else if (!isShowSideBar) setIsShowSideBar(true);
   };
 
+  const [isShowFormAddNewFriend, setIsShowFormAddNewFriend] = useState(false);
+  const handleOpenFormAddNewFriend = () => {
+    if (isShowFormAddNewFriend) setIsShowFormAddNewFriend(false);
+    else if (!isShowFormAddNewFriend) setIsShowFormAddNewFriend(true);
+  };
   return (
     <>
       <nav className="p-5 text-2xl bg-black text-white w-full shadow-xl  fixed z-40">
@@ -40,7 +47,7 @@ const Navbar = () => {
 
           <li className="w-150">
             <Input
-              className="w-full md:w-90 !rounded-full"
+              className="w-full md:w-90 !rounded-full !border-none"
               suffix={<SearchOutlined />}
               placeholder="Tìm bạn bè của bạn ?"
             />
@@ -48,6 +55,18 @@ const Navbar = () => {
 
           {/* thông báo */}
           <li className="flex items-center ">
+            <div className="flex rounded-4xl items-center mr-5 bg-gray-800 text-gray-300">
+              <Button
+                className=" !bg-gray-800 !rounded-4xl !text-gray-300 !border-none hover:!bg-gray-700
+                     "
+                onClick={() => {
+                  handleOpenFormAddNewFriend();
+                }}
+              >
+                <PlusOutlined />
+                <span className="text-base ml-2">Thêm bạn mới</span>
+              </Button>
+            </div>
             <div className="mr-3 hover:text-amber-400 ">
               <Dropdown
                 className="!mr-4"
@@ -131,6 +150,12 @@ const Navbar = () => {
       </nav>
       <div className="">
         <Sidebar isShowSidebar={isShowSideBar} />
+      </div>
+      <div>
+        <FormAddNewFriend
+          isOpenFormAddNewFriend={isShowFormAddNewFriend}
+          handleOpen={handleOpenFormAddNewFriend}
+        />
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import React from 'react';
 const HomePage = () => {
   return (
     <>
-      <div className=" bg-black text-white w-auto h-screen p-4">
+      <div className="  text-white p-4 grid grid-cols-4 gap-6 ">
         <CardFriendInfor />
       </div>
     </>
