@@ -24,6 +24,7 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
   const [imageUrl, setImageUrl] = useState(null); // Lưu trữ URL của ảnh tải lên
 
   // Hàm xử lý khi có thay đổi trong file tải lên
+
   const handleChange = (info) => {
     let newFileList = [...info.fileList];
 

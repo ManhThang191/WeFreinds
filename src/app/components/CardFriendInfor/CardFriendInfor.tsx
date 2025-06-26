@@ -8,7 +8,7 @@ import {
   MoreOutlined,
   PlusOutlined,
 } from '@ant-design/icons';
-import { Button, Dropdown } from 'antd';
+import { Dropdown } from 'antd';
 import Link from 'next/link';
 
 import React, { useState } from 'react';
