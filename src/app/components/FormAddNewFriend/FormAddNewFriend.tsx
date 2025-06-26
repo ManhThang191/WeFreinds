@@ -1,8 +1,13 @@
 'use client';
 
-import { CloseOutlined, HeartOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  CloseOutlined,
+  DeleteOutlined,
+  HeartOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
 import { Button, DatePicker, Input, message, Radio, Upload } from 'antd';
-import TextArea from 'antd/es/input/TextArea';
+import { RcFile } from 'antd/es/upload';
 import React, { useState } from 'react';
 
 const { Dragger } = Upload;
@@ -39,7 +44,7 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
   };
 
   // Kiểm tra trước khi tải ảnh (chỉ cho phép tải ảnh)
-  const beforeUpload = (file) => {
+  const beforeUpload = (file: RcFile) => {
     const isImage = file.type.startsWith('image/');
     if (!isImage) {
       message.error('Chỉ cho phép tải lên ảnh!');
@@ -47,14 +52,19 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
     return isImage;
   };
 
+  const handleRemoveImage = () => {
+    setFileList([]);
+    setImageUrl(null);
+    message.info('Ảnh đã được xóa');
+  };
+
   return (
     <>
-      Popup Modal
       {isOpenFormAddNewFriend && (
         <>
           <div className="w-full h-full bg-black fixed inset-0 opacity-80"></div>
           <div className="fixed inset-0 p-10 flex items-center justify-center ">
-            <div className=" p-6 rounded-lg shadow-lg w-250 bg-gray-800 text-gray-300">
+            <div className=" p-6 rounded-lg shadow-lg w-170 bg-gray-800 text-gray-300">
               <div className=" w-full flex ">
                 <h2 className="text-2xl font-bold m-auto items-center text-center mb-4">
                   Thêm bạn mới !
@@ -67,54 +77,27 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
                 </Button>
               </div>
 
-              <form action="#" method="POST">
-                <div className="h-[420px] grid grid-cols-2 grid-rows-2 gap-6">
-                  <div className="">
-                    <div className="flex-col items-center mb-4">
-                      <div className="mb-4">
-                        <span className="">Tên</span>
-                        <Input
-                          className="!border-none"
-                          size="large"
-                          placeholder="Nhập họ và tên bạn của bạn"
-                          count={{
-                            show: true,
-                            max: 30,
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <span className="mr-2">Sinh nhật</span>
-                        <DatePicker
-                          size="large"
-                          className="!mr-5 !border-none"
-                        />
-
-                        <Radio.Group
-                          // value={}
-                          options={[
-                            {
-                              value: 'male',
-                              label: <span className="text-gray-300">Nam</span>,
-                            },
-                            {
-                              value: 'female',
-                              label: <span className="text-gray-300">Nữ</span>,
-                            },
-                          ]}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
+              <form action="#" method="POST" className="">
+                <div className=" h-[440px]">
                   <div
-                    className=" rounded-2xl flex flex-col 
-                    items-center justify-center "
+                    className=" rounded-2xl min-h-[300px] flex flex-col 
+                    items-center justify-center mb-5 border-1 relative"
                   >
+                    {imageUrl && (
+                      <div className="absolute right-5 bottom-5">
+                        <Button
+                          onClick={handleRemoveImage}
+                          className="!bg-gray-700 !text-gray-300 !border-none hover:!bg-gray-900 !p-2"
+                        >
+                          <DeleteOutlined className="!text-red-500 text-xl" />
+                          <p className="text-sm">Xóa ảnh</p>
+                        </Button>
+                      </div>
+                    )}
                     <Dragger
-                      className="max-w-80 h-auto overflow-hidden 
-                                  border-2 border-gray-400 rounded-md
-                                  hover:!border-gray-800"
+                      className=" 
+                                    rounded-md
+                                  "
                       name="file"
                       accept="image/*" // Chỉ cho phép tải ảnh
                       showUploadList={false} // Không hiển thị danh sách file đã tải lên
@@ -123,23 +106,81 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
                       fileList={fileList} // Cập nhật fileList (chỉ giữ một file)
                     >
                       {imageUrl && imageUrl ? (
-                        <div className=" flex justify-center overscroll-auto w-30 items-center">
-                          <img
-                            src={imageUrl}
-                            alt="Uploaded Preview"
-                            className="object-cover  rounded-md"
-                          />
-                        </div>
+                        <>
+                          <div className=" flex justify-center w-60 h-60 ">
+                            <img
+                              src={imageUrl}
+                              alt="Uploaded Preview"
+                              className="object-cover rounded-md"
+                            />
+                          </div>
+                        </>
                       ) : (
                         <div className="text-center">
                           <PlusOutlined className="text-4xl !text-gray-300 mb-2" />
-                          <p className="text-sm text-gray-300">Tải ảnh lên</p>
+                          <p className="text-sm text-gray-300">
+                            Tải hoặc kéo thả ảnh{' '}
+                          </p>
                         </div>
                       )}
                     </Dragger>
                   </div>
-                  <div className="bg-amber-300"></div>
-                  <div className="">
+                  <div className="flex-col items-center ">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex h-fit ">
+                        <span className="text-xl mr-4">Tên</span>
+                        <Input
+                          className="!border-none "
+                          // size="large"
+                          placeholder="Nhập họ và tên"
+                          required
+                          count={{
+                            show: true,
+                            max: 30,
+                          }}
+                        />
+                      </div>
+                      <div className="flex h-fit ">
+                        <span className="whitespace-nowrap text-xl mr-4 ">
+                          Biệt danh
+                        </span>
+                        <Input
+                          className="!border-none  "
+                          // size="large"
+                          placeholder="Nhập biệt danh"
+                          required
+                          count={{
+                            show: true,
+                            max: 30,
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center ">
+                      <span className="mr-2 text-xl">Sinh nhật</span>
+                      <DatePicker className="!mr-5 !border-none" />
+
+                      <Radio.Group
+                        // value={}
+                        options={[
+                          {
+                            value: 'male',
+                            label: (
+                              <span className="text-gray-300 text-xl">Nam</span>
+                            ),
+                          },
+                          {
+                            value: 'female',
+                            label: (
+                              <span className="text-gray-300 text-xl">Nữ</span>
+                            ),
+                          },
+                        ]}
+                      />
+                    </div>
+                  </div>
+
+                  {/* <div className="">
                     <span className="text-2xl">Giới thiệu</span>
                     <TextArea
                       rows={6}
@@ -147,7 +188,7 @@ const FormAddNewFriend: React.FC<FormAddNewFriendProps> = ({
                       placeholder="Giới thiệu người bạn ở đây!"
                       size="large"
                     />
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="mt-5 flex  justify-end  w-full h-auto ">

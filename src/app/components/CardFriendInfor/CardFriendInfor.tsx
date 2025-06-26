@@ -6,11 +6,13 @@ import {
   EditOutlined,
   GiftOutlined,
   MoreOutlined,
+  PlusOutlined,
 } from '@ant-design/icons';
-import { Dropdown } from 'antd';
+import { Button, Dropdown } from 'antd';
 import Link from 'next/link';
 
-import React from 'react';
+import React, { useState } from 'react';
+import FormAddNewFriend from '../FormAddNewFriend/FormAddNewFriend';
 
 // interface FriendsProps {
 //   idFriend: string;
@@ -22,9 +24,30 @@ import React from 'react';
 // }
 
 const CardFriendInfor = () => {
+  const [isShowFormAddNewFriend, setIsShowFormAddNewFriend] = useState(false);
+  const handleOpenFormAddNewFriend = () => {
+    if (isShowFormAddNewFriend) setIsShowFormAddNewFriend(false);
+    else if (!isShowFormAddNewFriend) setIsShowFormAddNewFriend(true);
+  };
   return (
     <>
       {/* <div className="grid grid-cols-4 gap-4 bg-gray-600 h-full"> */}
+      <div
+        onClick={handleOpenFormAddNewFriend}
+        className="bg-gray-800 text-gray-300 w-ful min-w-[250px] p-3 rounded-xl 
+               hover:scale-102 transition-transform duration-300 ease-in-out 
+              cursor-pointer flex items-center justify-center
+              "
+      >
+        <div className=" ">
+          <PlusOutlined className="!text-2xl mr-3 !text-gray-300" />
+          <span className="text-2xl text-gray-300">Thêm bạn bè</span>
+        </div>
+      </div>
+      <FormAddNewFriend
+        isOpenFormAddNewFriend={isShowFormAddNewFriend}
+        handleOpen={handleOpenFormAddNewFriend}
+      />
       {FriendsList &&
         FriendsList.length > 0 &&
         FriendsList.map((friend) => (
