@@ -34,7 +34,10 @@ const Login: React.FC = () => {
               />
             </div>
             <div>
-              <Link href={''} className="!text-sm hover:!text-yellow-500">
+              <Link
+                href={'/ForgotPasswordPage'}
+                className="!text-sm hover:!text-yellow-500"
+              >
                 Quên mật khẩu?
               </Link>
             </div>
