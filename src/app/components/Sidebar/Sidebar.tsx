@@ -58,7 +58,7 @@ const Sidebar = ({ isShowSidebar }: SidebarProps) => {
       </div>
 
       <div
-        className={`fixed z-20 top-0 left-[-120] h-screen bg-black pt-20 scroll-auto text-white w-30 transform overflow-y-auto ${
+        className={`fixed z-20 top-0 left-[-120px] h-screen bg-black pt-20 scroll-auto text-white w-30 transform overflow-y-auto ${
           isShowSidebar ? 'translate-x-full' : '-translate-x-0'
         } transition-transform duration-100 ease-in-out z-20`}
       >
